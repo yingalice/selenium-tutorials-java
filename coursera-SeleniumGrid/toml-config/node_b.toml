@@ -1,0 +1,6 @@
+[server]
+port = 5556
+
+[node]
+max-sessions = 5
+selenium-manager = true
