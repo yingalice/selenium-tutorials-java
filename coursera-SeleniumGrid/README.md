@@ -1,19 +1,29 @@
-[Selenium Grid - Running Selenium tests in parallel](https://www.coursera.org/projects/selenium-grid-running-selenium-tests-in-parallel) from Coursera Project Network (instructor: Saurabh Dhingra)
+=== Course ===
+- [Selenium Grid - Running Selenium tests in parallel](https://www.coursera.org/projects/selenium-grid-running-selenium-tests-in-parallel) from Coursera Project Network (instructor: Saurabh Dhingra)
 
-=== Hub and Node architecture ===
+=== Tasks ===
+- Task 1: Selenium Grid Setup – Running Node and Hub
+- Task 2: Running Selenium tests via Selenium Grid on chrome browsers
+- Task 3: Running Selenium tests via Selenium Grid on multiple browsers
+- Task 4: Selenium Grid configuration using the JSON file
+- Task 5: Running Selenium Tests parallelly on multiple browsers via Selenium Grid driven
 
-Hub
+=== Notes ===
+
+<u>Hub</u>
+
 - Central point where we load our tests
 - Controls execution of tests and sends to node
 - Only 1 hub in a Grid
 - Launched on a single machine
 
-Node
+<u>Node</u>
+
 - Selenium instances that will execute the tests that you load on the hub
 - Can be more than 1 Node in a Grid
 - Nodes can be launched on multiple machines with different browsers and platforms
 
-=== Running Selenium Grid ===
+- Running Selenium Grid
 
 <u>CLI</u>
 
