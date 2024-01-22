@@ -1,0 +1,2 @@
+- Completed various Selenium projects in Coursera
+- Each project folder has an individual README.md
