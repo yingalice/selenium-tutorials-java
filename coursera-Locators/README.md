@@ -1,0 +1,61 @@
+
+=== Course ===
+- [Master XPath, Css Selector, and Other Locators in Selenium](https://www.coursera.org/projects/master-xpath-css-selector-other-locators-in-selenium) from Coursera Project Network (instructor: Saurabh Dhingra)
+
+=== Tasks ===
+- Task 1: Locators in Selenium Test Automation and using Id, name, classname, and Tagname
+- Task 2: Linktext and Partial linktext in locating strategies
+- Task 3: Absolute and relative XPaths
+- Task 4: Operators in XPaths
+- Task 5: Methods in XPath
+- Task 6: Axes in XPath
+- Task 7: Practicing dynamic XPath
+- Task 8: CSS Selectors
+
+=== Notes ===
+- 8 locators in Selenium:
+  - id
+  - name
+  - className
+  - tagName
+  - linkText
+  - partialLinkText
+  - xpath
+  - cssSelector
+- Xpath
+  - Path written using HTML tags and their attributes to reach a particular node
+    - `/` used to access direct child
+    - `//` used to access any child
+  - Operators
+    - and
+    - or
+  - Methods - Can use on @attributes or text()
+    - contains()
+    - starts-with()
+    - text()
+  - Axes
+    - ancestor
+    - following
+    - preceding
+    - following-sibling
+    - preceding-sibling
+    - parent
+  - Examples
+    - `//input[@type='password' and @name='password']`
+    - `(//span[text()='All'])[2]`
+    - `//input[starts-with(@class, 'input')]`
+    - `//a[text()[contains(., 'Electric')]]`
+      - Warning: Below may not work when there are multiple text subnodes (only works on 1st text node):
+        - `//a[contains(text(), 'Electric')]` 
+        - See [stackoverflow post](https://stackoverflow.com/questions/3655549/xpath-containstext-some-string-doesnt-work-when-used-with-node-with-more)
+    - `//input[@name='uid']/following-sibling::label[@id='message23']`
+    - `//label[@id='message18']/ancestor::table`
+- CSS Selectors
+  - Attribute: `input[name='uid']`
+  - Class: `div.class1.class2`
+  - ID: `#id`
+  - Operators:
+    - Starts with: `^`
+    - Ends with: `$`
+    - Contains: `*`
+    - Example: `input[id^='ema']`
