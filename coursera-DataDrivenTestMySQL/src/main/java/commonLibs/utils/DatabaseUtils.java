@@ -31,7 +31,7 @@ public class DatabaseUtils {
     for (int row = 1; row <= rowCount; row++) {
       resultSet.next();
       for (int col = 1; col <= colCount; col++) {
-        data[row - 1][col - 1] = resultSet.getString(col);
+        data[row - 1][col - 1] = resultSet.getString(col);  // Column value from current row.  Can specify index or name.
       }
     }
     

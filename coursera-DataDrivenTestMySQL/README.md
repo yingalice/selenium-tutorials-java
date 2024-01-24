@@ -19,22 +19,36 @@
 - Download MySQL Installer - Community.  Do a custom install with:
   - MySQL Server
   - MySQL Workbench
+    - Execute selected SQL statements by clicking on lightning bolt icon
+    - See `sql/` folder for commands to populate database
 - Tools
   - Database = MySQL
-    - Execute selected SQL statements by clicking lightning bolt icon
   - Library to connect to database = JDBC (MySQL Connector/J)
 - @DataProvider
   - Pass multiple sets of test data to test case
   - Returns Object[][], so data can be of any type
   - `@DataProvider` = On the utility
   - `@Test (dataProvider = "getData", dataProviderClass = TestDataSource.class)` = On the test
-- Open/close/query database:
+- Open connection, query database:
   ```
   String connectionString = String.format("jdbc:mysql://%s:%d/%s", server, portNumber, database);
   Connection connection = DriverManager.getConnection(connectionString, username, password);
-  Statement stmt = connection.createStatement();
+  Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
   ResultSet resultSet = stmt.executeQuery("SELECT * from users");
-  resultSet.next();                        // Put this in a loop to step through rows
-  resultSet.getString(columnIndexOrName);  // Column value from current row
+  ```
+- Read query results, and populate contents to Object[][] for @DataProvider
+  ```
+  resultSet.last();                                         // Move cursor to last row
+  int rowCount = resultSet.getRow();                        // Last row
+  int colCount = resultSet.getMetaData().getColumnCount();  // Last column
+  Object[][] data = new Object[rowCount][colCount];
+  
+  resultSet.beforeFirst();
+  for (int row = 1; row <= rowCount; row++) {
+    resultSet.next();
+    for (int col = 1; col <= colCount; col++) {
+      data[row - 1][col - 1] = resultSet.getString(col);  // Column value from current row.  Can specify index or name.
+    }
+  }
   connection.close();
   ```

@@ -11,28 +11,27 @@ import com.guru99.utils.TestDataProvider;
 import commonLibs.implementation.CommonDriver;
 
 public class LoginPageTests {
-	CommonDriver cmnDriver;
-	String url = "http://demo.guru99.com/v4";
-	LoginPage loginPage;
-	
-	@BeforeMethod
-	public void setup() throws Exception {
-		cmnDriver = new CommonDriver("chrome");
-		cmnDriver.navigateToFirstUrl(url);
-		loginPage = new LoginPage(cmnDriver.getDriver());
-	}
-	
-//	@Test (dataProvider = "getData", dataProviderClass = TestDataProvider.class)
-	@Test (dataProvider = "getDataFromExcel", dataProviderClass = TestDataProvider.class)
-	public void verifyLogin(String sUsername, String sPassword) throws Exception {
-		loginPage.loginToApplication(sUsername, sPassword);
-		String actualTitle = cmnDriver.getTitle();
-		String expectedTitle = "Guru99 Bank Manager HomePage";
-		Assert.assertEquals(actualTitle,  expectedTitle);
-	}
-	
-	@AfterMethod
-	public void cleanUp() throws Exception {
-		cmnDriver.closeAllBrowsers();
-	}
+  CommonDriver cmnDriver;
+  String url = "http://demo.guru99.com/v4";
+  LoginPage loginPage;
+
+  @BeforeMethod
+  public void setup() throws Exception {
+    cmnDriver = new CommonDriver("chrome");
+    cmnDriver.navigateToFirstUrl(url);
+    loginPage = new LoginPage(cmnDriver.getDriver());
+  }
+
+  @Test (dataProvider = "getDataFromExcel", dataProviderClass = TestDataProvider.class)
+  public void verifyLogin(String sUsername, String sPassword) throws Exception {
+    loginPage.loginToApplication(sUsername, sPassword);
+    String actualTitle = cmnDriver.getTitle();
+    String expectedTitle = "Guru99 Bank Manager HomePage";
+    Assert.assertEquals(actualTitle, expectedTitle);
+  }
+
+  @AfterMethod
+  public void cleanUp() throws Exception {
+    cmnDriver.closeAllBrowsers();
+  }
 }

@@ -8,6 +8,8 @@
 - Task 4: Running Selenium tests via Jenkins
 - Task 5: Scheduling Selenium tests via Jenkins
 
+![CI/CD Process](CICD-Process.jpg)
+
 === Notes ===
 - Jenkins
 	- Install Jenkins.  Needs a local administrator account to run on
@@ -25,6 +27,8 @@
 				- Goals: `clean test`
 			- Advanced > Pom: `coursera-RunTestNGJenkins/pom.xml`
 		- Build now (manual build)
+		- Workspace:
+			- Can see downloaded code
 
 - Maven
 	- Install Maven to run in command line outside of Eclipse, and add its /bin to PATH
@@ -34,3 +38,15 @@
 		- `mvn test`
 			- Executes any *Test.java under src/test/java
 			- Executes tests listed in pom.xml.  Looks for the testng xml file listed under the surefire plugin
+				```
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.2.5</version>
+					<configuration>
+						<suiteXmlFiles> <!-- TestNG suite XML files -->
+							<suiteXmlFile>testXmlFiles/amazonHomepage.xml</suiteXmlFile>
+						</suiteXmlFiles>
+					</configuration>
+				</plugin>
+				```

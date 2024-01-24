@@ -8,24 +8,24 @@ import org.openqa.selenium.support.PageFactory;
 import commonLibs.implementation.Interactions;
 
 public class LoginPage {
-	Interactions interactions = new Interactions();
-	
-	@FindBy (name = "uid")
-	public WebElement userId;
+  Interactions interactions = new Interactions();
 
-	@FindBy (name = "password")
-	public WebElement userPassword;
+  @FindBy(name = "uid")
+  public WebElement userId;
 
-	@FindBy (name = "btnLogin")
-	public WebElement loginButton;
+  @FindBy(name = "password")
+  public WebElement userPassword;
 
-	public LoginPage(WebDriver driver) {
-		PageFactory.initElements(driver, this);
-	}
-	
-	public void loginToApplication(String sUsername, String sPassword) throws Exception {
-		interactions.setText(userId, sUsername);
-		interactions.setText(userPassword, sPassword);
-		interactions.clickElement(loginButton);
-	}
+  @FindBy(name = "btnLogin")
+  public WebElement loginButton;
+
+  public LoginPage(WebDriver driver) {
+    PageFactory.initElements(driver, this);
+  }
+
+  public void loginToApplication(String sUsername, String sPassword) throws Exception {
+    interactions.setText(userId, sUsername);
+    interactions.setText(userPassword, sPassword);
+    interactions.clickElement(loginButton);
+  }
 }
